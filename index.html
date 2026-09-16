@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<section class="home-intro">
+  <p>Natural Philosophy is a small journal of essays in the older sense of the term: philosophy as the patient study of things as they are, before they are divided up into separate disciplines.</p>
+</section>
+
+<section class="home-essays">
+  <h2 class="section-label">Latest essays</h2>
+
+  <ul class="essay-list">
+    {% for post in site.posts limit: 5 %}
+    {% include essay-list-item.html post=post %}
+    {% endfor %}
+  </ul>
+
+  {% if site.posts.size > 5 %}
+  <p class="see-all"><a href="{{ '/archive/' | relative_url }}">Read every essay in the archive</a></p>
+  {% endif %}
+</section>

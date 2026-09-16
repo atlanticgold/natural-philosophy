@@ -1,0 +1,107 @@
+---
+layout: page
+title: Search
+permalink: /search/
+---
+<div class="search-field">
+  <label for="search-input" class="section-label">Search essays by title, description, category, tag, author, or body text</label>
+  <input type="search" id="search-input" class="search-input" autocomplete="off" placeholder="Type to search…">
+</div>
+
+<p class="search-status" id="search-status">Loading…</p>
+<ul class="essay-list" id="search-results"></ul>
+
+<script>
+(function () {
+  var input = document.getElementById("search-input");
+  var results = document.getElementById("search-results");
+  var status = document.getElementById("search-status");
+  var index = [];
+
+  function setStatus(count, query) {
+    if (!query) {
+      status.textContent = "Type to search " + count + " essay" + (count === 1 ? "" : "s") + ".";
+    } else {
+      status.textContent = count + " result" + (count === 1 ? "" : "s") + " for \"" + query + "\".";
+    }
+  }
+
+  fetch("{{ '/search.json' | relative_url }}")
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+      index = data;
+      setStatus(index.length, "");
+    })
+    .catch(function () {
+      status.textContent = "Search couldn't load. Try refreshing the page.";
+    });
+
+  function matches(essay, query) {
+    var haystacks = [
+      essay.title,
+      essay.description,
+      essay.author,
+      essay.body,
+      (essay.categories || []).join(" "),
+      (essay.tags || []).join(" ")
+    ];
+    return haystacks.some(function (field) {
+      return (field || "").toLowerCase().indexOf(query) !== -1;
+    });
+  }
+
+  function render(list) {
+    results.innerHTML = "";
+    list.forEach(function (essay) {
+      var li = document.createElement("li");
+      li.className = "essay-item";
+
+      var titleLink = document.createElement("a");
+      titleLink.className = "essay-item-title";
+      titleLink.href = essay.url;
+      titleLink.textContent = essay.title;
+      li.appendChild(titleLink);
+
+      var meta = document.createElement("p");
+      meta.className = "essay-item-meta";
+      meta.textContent = essay.date;
+      li.appendChild(meta);
+
+      if (essay.categories && essay.categories.length) {
+        var cat = document.createElement("p");
+        cat.className = "essay-item-taxonomy";
+        cat.textContent = "Categories: " + essay.categories.join(", ");
+        li.appendChild(cat);
+      }
+
+      if (essay.tags && essay.tags.length) {
+        var tag = document.createElement("p");
+        tag.className = "essay-item-taxonomy";
+        tag.textContent = "Tags: " + essay.tags.join(", ");
+        li.appendChild(tag);
+      }
+
+      if (essay.description) {
+        var desc = document.createElement("p");
+        desc.className = "essay-item-description";
+        desc.textContent = essay.description;
+        li.appendChild(desc);
+      }
+
+      results.appendChild(li);
+    });
+  }
+
+  input.addEventListener("input", function () {
+    var query = input.value.trim().toLowerCase();
+    if (!query) {
+      results.innerHTML = "";
+      setStatus(index.length, "");
+      return;
+    }
+    var matched = index.filter(function (essay) { return matches(essay, query); });
+    render(matched);
+    setStatus(matched.length, input.value.trim());
+  });
+})();
+</script>

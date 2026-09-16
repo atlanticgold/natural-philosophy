@@ -1,0 +1,464 @@
+:root {
+  --paper: #e4e0d3;
+  --ink: #26241f;
+  --ink-soft: #5b574c;
+  --accent: #3f4f3a;
+  --rule: #cdc6b3;
+  --measure: 40rem;
+  --serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Georgia,
+    "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus {
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Header */
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  padding: 3.5rem 1.5rem 2rem;
+}
+
+.header-inner {
+  max-width: var(--measure);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-tagline {
+  margin: 0.6rem 0 1.75rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.2rem;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+/* Main content */
+
+.site-main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4.5rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* Homepage */
+
+.home-intro {
+  margin-bottom: 3rem;
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+.section-label {
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.see-all {
+  margin-top: 2rem;
+}
+
+/* Search */
+
+.search-field {
+  margin: 0 0 2rem;
+}
+
+.search-field .section-label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.search-input {
+  display: block;
+  width: 100%;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0;
+}
+
+.search-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.search-status {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0 0 2rem;
+}
+
+/* Essay lists (homepage + archive) */
+
+.essay-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.essay-item {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.essay-item:first-child {
+  border-top: none;
+}
+
+.essay-item-title {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.essay-item-title:hover,
+.essay-item-title:focus-visible {
+  color: var(--accent);
+}
+
+.essay-item-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.essay-item-description {
+  margin: 0.65rem 0 0;
+  color: var(--ink-soft);
+}
+
+.essay-item-taxonomy {
+  margin: 0.4rem 0 0;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+/* Grouped essay lists (archive by year, categories, tags) */
+
+.essay-group-label {
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.6rem;
+  margin: 3rem 0 0.5rem;
+}
+
+.essay-group:first-child .essay-group-label {
+  margin-top: 0;
+}
+
+/* Pages (About, Archive) */
+
+.page-title {
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 1.75rem;
+}
+
+/* Essays */
+
+.essay-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+
+.essay-header {
+  margin-bottom: 2.5rem;
+}
+
+.essay-description {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0.85rem;
+}
+
+.essay-meta {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.essay-taxonomy {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0.4rem 0 0;
+}
+
+.essay-body p {
+  margin: 0 0 1.4em;
+}
+
+.essay-body p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.6rem;
+  font-weight: 600;
+  line-height: 0.82;
+  padding: 0.05em 0.09em 0 0;
+  color: var(--accent);
+}
+
+.essay-body h2 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.essay-body h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.essay-body blockquote {
+  margin: 2rem 0;
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--accent);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.essay-body ul,
+.essay-body ol {
+  padding-left: 1.5rem;
+  margin: 0 0 1.4em;
+}
+
+.essay-body li {
+  margin: 0.5rem 0;
+}
+
+.essay-body li::marker {
+  color: var(--accent);
+}
+
+.essay-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2.25rem auto;
+}
+
+.essay-body pre,
+.essay-body code {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.85em;
+}
+
+.essay-body pre {
+  padding: 1.1rem;
+  overflow-x: auto;
+  background: rgba(38, 36, 31, 0.05);
+  border-radius: 2px;
+}
+
+.essay-body mjx-container[display="true"] {
+  margin: 1.85rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Footnotes (kramdown's auto-generated .footnotes block — no author
+   markup needed beyond the [^label] syntax itself) */
+
+.essay-body .footnote {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.essay-body .footnotes {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.essay-body .footnotes::before {
+  content: "Notes";
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.essay-body .footnotes ol {
+  padding-left: 1.4rem;
+  margin: 0;
+}
+
+.essay-body .footnotes li {
+  margin: 0.75rem 0;
+}
+
+.essay-body .footnotes li p {
+  margin: 0;
+}
+
+.essay-body .footnotes .reversefootnote {
+  margin-left: 0.3rem;
+  text-decoration: none;
+}
+
+/* Bibliography — opt in with {: .essay-bibliography} under a heading */
+
+.essay-body h2.essay-bibliography {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Response / Addition */
+
+.essay-relations {
+  margin-top: 2rem;
+}
+
+.essay-body + .essay-relations {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 2rem;
+}
+
+.essay-relations-heading {
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.essay-relations-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.essay-relations-list li {
+  margin: 0.45rem 0;
+}
+
+.essay-back {
+  margin-top: 2.5rem;
+}
+
+.essay-body + .essay-back {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+}
+
+.essay-back a {
+  text-decoration: none;
+}
+
+/* Small screens */
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  body {
+    font-size: 1.1rem;
+  }
+
+  .essay-title {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

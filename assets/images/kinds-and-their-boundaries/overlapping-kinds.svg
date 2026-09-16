@@ -1,0 +1,15 @@
+<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Three overlapping category boundaries</title>
+  <desc id="desc">Three soft-edged circles labeled gold, water, and species, overlapping at the center to show that category boundaries can shade into one another rather than end sharply.</desc>
+  <defs>
+    <filter id="soften" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.2" />
+    </filter>
+  </defs>
+  <circle cx="230" cy="150" r="120" fill="none" stroke="#4b5d45" stroke-width="2" filter="url(#soften)" />
+  <circle cx="370" cy="150" r="120" fill="none" stroke="#8b6b3d" stroke-width="2" filter="url(#soften)" />
+  <circle cx="300" cy="255" r="120" fill="none" stroke="#26241f" stroke-width="2" filter="url(#soften)" />
+  <text x="150" y="110" font-family="Georgia, serif" font-size="18" fill="#4b5d45">gold</text>
+  <text x="410" y="110" font-family="Georgia, serif" font-size="18" fill="#8b6b3d">water</text>
+  <text x="270" y="320" font-family="Georgia, serif" font-size="18" fill="#26241f">species</text>
+</svg>

@@ -1,0 +1,16 @@
+---
+layout: page
+title: Archive
+permalink: /archive/
+---
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+<section class="essay-group">
+  <h2 class="essay-group-label">{{ year.name }}</h2>
+  <ul class="essay-list">
+    {% for post in year.items %}
+    {% include essay-list-item.html post=post %}
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

@@ -1,0 +1,18 @@
+---
+layout: page
+title: Tags
+permalink: /tags/
+---
+{% assign tags_list = site.tags | sort %}
+{% for tag in tags_list %}
+{% assign tag_name = tag | first %}
+{% assign tag_posts = tag | last %}
+<section class="essay-group" id="{{ tag_name | slugify }}">
+  <h2 class="essay-group-label">{{ tag_name }}</h2>
+  <ul class="essay-list">
+    {% for post in tag_posts %}
+    {% include essay-list-item.html post=post %}
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

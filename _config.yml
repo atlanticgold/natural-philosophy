@@ -1,0 +1,48 @@
+title: Natural Philosophy
+tagline: The study of things as they are.
+description: >-
+  Natural Philosophy is a journal of essays in the older sense of the term:
+  philosophy as the patient study of things as they are.
+
+# Used in search results and page metadata. A single global value since
+# there's currently one author for the whole journal — if that ever
+# changes, a per-post `author:` front-matter override can be added then,
+# falling back to this value for posts that don't set one.
+author: "Your Name"
+
+# --- Deployment settings ---
+# This repo is atlanticgold/natural-philosophy, deployed as a GitHub Pages
+# project site at https://atlanticgold.github.io/natural-philosophy/, so:
+url: "https://atlanticgold.github.io"
+baseurl: "/natural-philosophy"
+#
+# Every internal link and asset path in this project is generated with
+# Jekyll's relative_url filter (or the <base> tag in _layouts/default.html
+# for images referenced from essay Markdown), so a local build now matches
+# the live site exactly.
+#
+# The actual GitHub Pages deployment doesn't strictly depend on this being
+# right, either: .github/workflows/pages.yml asks actions/configure-pages
+# for the correct base path and passes it to `jekyll build --baseurl`
+# directly, overriding whatever is set here — so if the repo is ever
+# renamed again, the live site corrects itself on the next push even
+# before this file is updated to match.
+
+markdown: kramdown
+
+# Clean essay URLs, e.g. /essays/2026/09/11/on-first-principles/
+permalink: /essays/:year/:month/:day/:title/
+
+# Lets essays write math as $$ ... $$ (kramdown tells $$ apart from text
+# by context: on its own line = displayed, inline in a sentence = inline).
+# This alone doesn't render anything — see the MathJax script in
+# _layouts/default.html, loaded only on essay pages.
+kramdown:
+  math_engine: mathjax
+
+# Keep project files out of the built site.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

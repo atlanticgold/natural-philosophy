@@ -1,0 +1,27 @@
+{% comment %}
+  Renders one essay entry for a list — used on the homepage, the archive,
+  and the categories/tags pages, so all four stay in sync automatically
+  instead of duplicating this markup.
+
+  Usage: include this from a page or layout, passing a post object as
+  the `post` parameter.
+{% endcomment %}
+<li class="essay-item">
+  <a class="essay-item-title" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+  <p class="essay-item-meta">
+    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %-d, %Y" }}</time>
+  </p>
+  {% if include.post.categories.size > 0 %}
+  <p class="essay-item-taxonomy">Categories:
+    {% for category in include.post.categories %}<a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+  </p>
+  {% endif %}
+  {% if include.post.tags.size > 0 %}
+  <p class="essay-item-taxonomy">Tags:
+    {% for tag in include.post.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+  </p>
+  {% endif %}
+  {% if include.post.description %}
+  <p class="essay-item-description">{{ include.post.description }}</p>
+  {% endif %}
+</li>

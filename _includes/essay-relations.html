@@ -1,0 +1,38 @@
+{% comment %}
+  Renders a "Response" or "Addition" section for an essay.
+
+  Include this from a layout, passing a heading and a list of identifiers,
+  e.g. heading="Response" and identifiers=page.responses.
+
+  `identifiers` is a list of stable post identifiers — each one a post's
+  filename without the date-folder prefix or extension, e.g.
+  "2026-09-11-on-first-principles". This is the same identifier Jekyll's
+  own post_url tag uses, so it survives permalink or theme changes.
+  (Written here as plain text on purpose: Liquid still parses tags inside
+  a comment block, so the literal post_url tag syntax can't appear here
+  without tripping the same "empty post name" error this file works
+  around.)
+
+  Only posts that resolve to a real file in _posts/ are shown. Titles and
+  URLs are read from the referenced post itself — never typed by hand.
+  If nothing resolves (the field is absent, empty, or every identifier is
+  a typo), no section is rendered at all.
+{% endcomment %}
+{% capture relation_links %}
+{% for id in include.identifiers %}
+{% assign target_path = "_posts/" | append: id | append: ".md" %}
+{% assign match = site.posts | where: "path", target_path | first %}
+{% if match %}
+<li><a href="{{ match.url | relative_url }}">{{ match.title }}</a></li>
+{% endif %}
+{% endfor %}
+{% endcapture %}
+{% assign relation_links = relation_links | strip %}
+{% if relation_links != "" %}
+<section class="essay-relations">
+  <h2 class="essay-relations-heading">{{ include.heading }}</h2>
+  <ul class="essay-relations-list">
+    {{ relation_links }}
+  </ul>
+</section>
+{% endif %}

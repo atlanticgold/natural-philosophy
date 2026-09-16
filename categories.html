@@ -1,0 +1,18 @@
+---
+layout: page
+title: Categories
+permalink: /categories/
+---
+{% assign categories_list = site.categories | sort %}
+{% for category in categories_list %}
+{% assign category_name = category | first %}
+{% assign category_posts = category | last %}
+<section class="essay-group" id="{{ category_name | slugify }}">
+  <h2 class="essay-group-label">{{ category_name }}</h2>
+  <ul class="essay-list">
+    {% for post in category_posts %}
+    {% include essay-list-item.html post=post %}
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
